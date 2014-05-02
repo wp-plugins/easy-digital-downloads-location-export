@@ -104,7 +104,7 @@ class EDD_Payments_By_Location_Export extends EDD_Export {
 			'year'   => isset( $_POST['year'] ) ? absint( $_POST['year'] ) : date( 'Y' )
 		) );
 		
-		$selected_country =  isset( $_POST['edd_export_payment_country'] ) ? $_POST['edd_export_payment_country'] : 'all';
+		$selected_country =  isset( $_POST['edd_export_payment_country'] ) ? $_POST['edd_export_payment_country'] : '0';
 		$selected_state = isset( $_POST['card_state'] ) ? $_POST['card_state'] : '0';
 					
 		foreach ( $payments as $payment ) {
@@ -118,10 +118,10 @@ class EDD_Payments_By_Location_Export extends EDD_Export {
 			
 			
 			//If our country matches
-			if ( $user_info['address']['country'] == $selected_country || $payment_meta['country'] == $selected_country || $selected_country == 'all' ){
+			if ( $user_info['address']['country'] == $selected_country || $payment_meta['country'] == $selected_country || $selected_country == '0' || $selected_country == 'all' ){
 								
 				//If the state matches the selection or is 'all'
-				if ( $user_info['address']['state'] == $selected_state || $payment_meta['state'] || $selected_state == 'all' ){
+				if ( $user_info['address']['state'] == $selected_state || $payment_meta['state'] == $selected_state || $selected_state == '0' || $selected_state == 'all' ){
 				
 					if ( $downloads ) {
 						foreach ( $downloads as $key => $download ) {
