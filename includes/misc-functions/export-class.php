@@ -94,15 +94,28 @@ class EDD_Payments_By_Location_Export extends EDD_Export {
 		global $wpdb, $edd_options;
 
 		$data = array();
-
-		$payments = edd_get_payments( array(
-			'offset' => 0,
-			'number' => -1,
-			'mode'   => edd_is_test_mode() ? 'test' : 'live',
-			'status' => isset( $_POST['edd_export_payment_status'] ) ? $_POST['edd_export_payment_status'] : 'any',
-			'month'  => isset( $_POST['month'] ) ? absint( $_POST['month'] ) : date( 'n' ),
-			'year'   => isset( $_POST['year'] ) ? absint( $_POST['year'] ) : date( 'Y' )
-		) );
+		
+		if ( $_POST['month'] == 'all' ){
+			
+			$payments = edd_get_payments( array(
+				'offset' => 0,
+				'number' => -1,
+				'mode'   => edd_is_test_mode() ? 'test' : 'live',
+				'status' => isset( $_POST['edd_export_payment_status'] ) ? $_POST['edd_export_payment_status'] : 'any',
+				'year'   => isset( $_POST['year'] ) ? absint( $_POST['year'] ) : date( 'Y' )
+			) );
+			
+		}
+		else{
+			$payments = edd_get_payments( array(
+				'offset' => 0,
+				'number' => -1,
+				'mode'   => edd_is_test_mode() ? 'test' : 'live',
+				'status' => isset( $_POST['edd_export_payment_status'] ) ? $_POST['edd_export_payment_status'] : 'any',
+				'month'  => isset( $_POST['month'] ) ? absint( $_POST['month'] ) : date( 'n' ),
+				'year'   => isset( $_POST['year'] ) ? absint( $_POST['year'] ) : date( 'Y' )
+			) );
+		}
 		
 		$selected_country =  isset( $_POST['edd_export_payment_country'] ) ? $_POST['edd_export_payment_country'] : '0';
 		$selected_state = isset( $_POST['card_state'] ) ? $_POST['card_state'] : '0';
