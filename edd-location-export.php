@@ -3,7 +3,7 @@
 Plugin Name: Easy Digital Downloads - Location Export
 Plugin URI: http://mintplugins.com/edd-location-export
 Description: Export payment history by date and location. Useful for tax logs.
-Version: 1.0.0.7
+Version: 1.0.0.8
 Author: Mint Plugins
 Author URI: http://mintplugins.com
 License: GPLv2 or later

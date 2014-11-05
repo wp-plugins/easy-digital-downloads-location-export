@@ -5,8 +5,8 @@ Contributors: johnstonphilip, mintplugins, mordauk
 Donate link: http://pippinsplugins.com/support-the-site
 Tags: download, downloads, e-store, eshop, digital downloads, e-downloads, ecommerce, e commerce, e-commerce, selling, wp-ecommerce, wp ecommerce, mordauk, Pippin Williamson, pippinsplugins. mintplugins, reports, add-on
 Requires at least: 3.3
-Tested up to: 3.9
-Stable Tag: 1.0.0.7
+Tested up to: 4.0
+Stable Tag: 1.0.0.8
 License: GNU Version 2 or Any Later Version
 
 Export payment history by location and date. Useful for tax logs.
@@ -45,8 +45,11 @@ Would you like to help translate the plugin into more languages? [Join our WP-Tr
 
 == Changelog ==
 
+= 1.0.0.8: November 5, 2014 =
+* Add Totals Row to the bottom of the export. This way you don’t have to manually add up each row to get the totals for tax etc
+
 = 1.0.0.7: November 5, 2014 =
-* Fixed issue where purchases without location information were encountered.
+* Fixed bug if purchase didn’t have a location attached to it.
 
 = 1.0.0.6: June 11, 2014 =
 * Add “All Months” option to allow for the export of sales-by-location from an entire year.

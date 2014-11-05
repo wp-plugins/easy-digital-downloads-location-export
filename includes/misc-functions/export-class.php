@@ -117,6 +117,10 @@ class EDD_Payments_By_Location_Export extends EDD_Export {
 			) );
 		}
 		
+		//Set defaults for totals
+		$overall_total = 0;
+		$total_tax = 0;
+		
 		$selected_country =  isset( $_POST['edd_export_payment_country'] ) ? $_POST['edd_export_payment_country'] : '0';
 		$selected_state = isset( $_POST['card_state'] ) ? $_POST['card_state'] : '0';
 					
@@ -211,6 +215,10 @@ class EDD_Payments_By_Location_Export extends EDD_Export {
 					else{
 						$city = NULL;	
 					}
+					
+					//Totals:
+					$overall_total = $overall_total + html_entity_decode( edd_format_amount( $total ) );
+					$total_tax = $total_tax + html_entity_decode( edd_get_payment_tax( $payment->ID, $payment_meta ) );
 							
 					$data[] = array(
 						'id'       => $payment->ID,
@@ -237,6 +245,30 @@ class EDD_Payments_By_Location_Export extends EDD_Export {
 				}
 			}
 		}
+		
+		//Add a row at the bottom for the total		
+		$data[] = array(
+			'id'       => __( 'Totals:', 'edd_location_export' ),
+			'email'    => NULL,
+			'first'    => NULL,
+			'last'     => NULL,
+			'products' => NULL,
+			'skus'     => NULL,
+			'amount'   => $overall_total,
+			'tax'      => $total_tax,
+			'discount' => NULL,
+			'gateway'  => NULL,
+			'key'      => NULL,
+			'date'     => NULL,
+			'user'     => NULL,
+			'status'   => NULL,
+			'country'  => NULL,
+			'state'    => NULL,
+			'city '    => NULL,
+		);
+
+		if( !edd_use_skus() )
+			unset( $data['skus'] );
 
 		$data = apply_filters( 'edd_export_get_data', $data );
 		$data = apply_filters( 'edd_export_get_data_' . $this->export_type, $data );
