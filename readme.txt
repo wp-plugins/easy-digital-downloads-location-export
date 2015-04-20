@@ -5,7 +5,7 @@ Contributors: johnstonphilip, mintplugins, mordauk
 Donate link: http://pippinsplugins.com/support-the-site
 Tags: download, downloads, e-store, eshop, digital downloads, e-downloads, ecommerce, e commerce, e-commerce, selling, wp-ecommerce, wp ecommerce, mordauk, Pippin Williamson, pippinsplugins. mintplugins, reports, add-on
 Requires at least: 3.3
-Tested up to: 4.0
+Tested up to: 4.2
 Stable Tag: 1.0.0.8
 License: GNU Version 2 or Any Later Version
 
